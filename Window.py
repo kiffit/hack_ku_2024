@@ -29,9 +29,12 @@ class Window:
     __game_running = False
     __FPS = 60
 
+    __PROC = None
+
     # Init
-    def __init__(self):
+    def __init__(self, proc):
         self.set_dimensions()
+        self.__PROC = proc
 
     # Methods
     def set_dimensions(self):
@@ -48,6 +51,8 @@ class Window:
         end = 0
         dtime = 1
 
+        out = ""
+
         self.set_game_running(True)
 
         while self.is_game_running():
@@ -63,7 +68,7 @@ class Window:
 
             # Render game
             game.next(dtime)
-            self.get_queue().append(game.render(self.get_game_x(), self.get_game_y()))
+            self.get_queue().append(game.render(self.get_game_x(), self.get_game_y(), self.__PROC.poll() is None))
 
             # Output rendered
             # os.system("clear")
@@ -113,3 +118,13 @@ class Window:
     # To string
     def __str__(self):
         pass
+
+
+# Utility
+def check_pid(pid):
+    try:
+        os.kill(pid, 0)
+    except OSError:
+        return False
+    else:
+        return True

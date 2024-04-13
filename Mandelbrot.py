@@ -5,6 +5,7 @@
 from Game import Game
 from Pixel import Pixel
 from RenderLayer import RenderLayer
+from RenderQueue import RenderQueue
 
 
 import math
@@ -52,13 +53,13 @@ class Mandelbrot(Game):
             self.set_iterations(self.get_iterations() + 1)
 
     def render(self, x, y):
-        brightness = [" ", ".", "+", "*", "X", "#"]
+        brightness = [" ", ".", "*", "X", "#"]
 
         output = RenderLayer(x, y)
 
         for px in range(x):
             for py in range(int(y)):
-                x0 = (px - int(x/2)) / self.get_scale() + self.get_cpos_x()
+                x0 = ((px - int(x/2)) / self.get_scale())/1.7 + self.get_cpos_x()
                 y0 = (py - int(y/2)) / self.get_scale() + self.get_cpos_y()
 
                 x1 = 0

@@ -27,15 +27,6 @@ this allows for intuitive access of [x][y]
 from Pixel import Pixel
 
 
-def make_layer_from_text(text):
-    layer = RenderLayer(len(text), 1)
-
-    for i, char in enumerate(text):
-        layer.set_pixel(i, 1, char)
-
-    return layer
-
-
 class RenderLayer:
     # Attributes
     __data = None  # Will be a 2-dimensional list ordered as above
