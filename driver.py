@@ -6,18 +6,16 @@ import math
 
 from Pixel import Pixel
 from RenderLayer import RenderLayer
+from RenderQueue import RenderQueue
+from Window import Window
+from RenderTest import RenderTest
 
 
 def main():
-    r1 = RenderLayer(10, 10)
-    r1.fill_layer(Pixel("u"))
+    w1 = Window()
+    g1 = RenderTest()
 
-    r2 = RenderLayer(2, 2)
-    r2.fill_layer(Pixel("l"))
-
-    print(r1.render_ascii())
-    r1.add_layer(r2, 9, 9)
-    print(r1.render_ascii())
+    w1.run_game(g1)
 
 
 if __name__ == '__main__':

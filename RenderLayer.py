@@ -34,6 +34,11 @@ class RenderLayer:
     __x = -1
     __y = -1
 
+    __offset_x = 0
+    __offset_y = 0
+
+    __draw = True  # Tells render queue whether to draw layer or not
+
     # Init
     def __init__(self, x, y):
         self.set_x(x)
@@ -79,6 +84,9 @@ class RenderLayer:
 
         return output
 
+    def toggle_draw(self):
+        self.set_draw(not self.get_draw())
+
     # Getters
     def get_data(self):
         return self.__data
@@ -88,6 +96,15 @@ class RenderLayer:
 
     def get_y(self):
         return self.__y
+
+    def get_offset_x(self):
+        return self.__offset_x
+
+    def get_offset_y(self):
+        return self.__offset_y
+
+    def get_draw(self):
+        return self.__draw
 
     # Setters
     def set_data(self, data):
@@ -99,6 +116,26 @@ class RenderLayer:
     def set_y(self, y):
         self.__y = y
 
+    def set_offset_x(self, x):
+        self.__offset_x = x
+
+    def set_offset_y(self, y):
+        self.__offset_y = y
+
+    def set_offsets(self, x, y):
+        self.set_offset_x(x)
+        self.set_offset_y(y)
+
+    def set_draw(self, draw):
+        self.__draw = draw
+
     # To string
     def __str__(self):
-        pass
+        return (
+            f"RenderLayer:"
+            f"\n\tx: {self.get_x()}"
+            f"\n\ty: {self.get_y()}"
+            f"\n\tx offset: {self.get_offset_x()}"
+            f"\n\ty offset: {self.get_offset_y()}"
+            f"\n\tDraw: {self.get_draw()}"
+        )
