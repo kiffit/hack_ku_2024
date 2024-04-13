@@ -9,11 +9,12 @@ from RenderLayer import RenderLayer
 from RenderQueue import RenderQueue
 from Window import Window
 from GameBorder import GameBorder
+from Mandelbrot import Mandelbrot
 
 
 def main():
     w1 = Window()
-    g1 = GameBorder()
+    g1 = GameBorder(Mandelbrot())
 
     w1.run_game(g1)
 

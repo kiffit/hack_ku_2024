@@ -5,7 +5,6 @@
 from Game import Game
 from Pixel import Pixel
 from RenderLayer import RenderLayer
-from RenderQueue import RenderQueue
 from RenderTest import RenderTest
 
 
