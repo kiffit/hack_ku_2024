@@ -37,11 +37,11 @@ class Window:
     def set_dimensions(self):
         terminal = os.get_terminal_size()
 
-        self.set_x(terminal[0])
-        self.set_y(terminal[1])
+        self.set_x(terminal[0]-1)
+        self.set_y(terminal[1]-1)
 
         self.set_game_x(terminal[0])
-        self.set_game_y(terminal[1])
+        self.set_game_y(terminal[1]-1)
 
     def run_game(self, game):
         start = 0  # Frame time controls

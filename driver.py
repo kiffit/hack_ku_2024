@@ -8,12 +8,12 @@ from Pixel import Pixel
 from RenderLayer import RenderLayer
 from RenderQueue import RenderQueue
 from Window import Window
-from RenderTest import RenderTest
+from GameBorder import GameBorder
 
 
 def main():
     w1 = Window()
-    g1 = RenderTest()
+    g1 = GameBorder()
 
     w1.run_game(g1)
 
