@@ -58,7 +58,7 @@ class GameSelector(Game):
                 if self.__cursor_x < self.__window_x/2:
                     return "GameCanvas"
                 else:
-                    return "RenderTest"
+                    return "GameSnake"
 
     def render(self, x, y):
         output = RenderLayer(x, y)

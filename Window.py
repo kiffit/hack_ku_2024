@@ -72,7 +72,10 @@ class Window:
 
             # Output rendered
             # os.system("clear")
-            print(self.get_queue().render_ascii(), end="")
+            out = self.get_queue().render_ascii()
+            print(out.split("\n")[0])
+            print(out, end="")
+
 
             # Pause if necessary for frame limiter
             if dtime < 1/self.__FPS:

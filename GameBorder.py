@@ -5,11 +5,11 @@
 from Game import Game
 from Pixel import Pixel
 from RenderLayer import RenderLayer
-from RenderTest import RenderTest
 
 from Mandelbrot import Mandelbrot
 from RenderTest import RenderTest
 from GameCanvas import GameCanvas
+from GameSnake import GameSnake
 
 from GameSelector import GameSelector
 
@@ -39,7 +39,8 @@ class GameBorder(Game):
                 self.set_sub_game(RenderTest())
             elif game == "GameCanvas":
                 self.set_sub_game(GameCanvas())
-
+            elif game == "GameSnake":
+                self.set_sub_game(GameSnake())
 
     def render(self, x, y, pid_status):
         """
