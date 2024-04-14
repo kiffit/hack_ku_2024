@@ -19,5 +19,7 @@ Developed for Hack KU 2024.
 -------------------------------------------------------------
 
 To run, use the alias `alias terminal-boredom="sudo python3 /PATH/TO/driver.py"`
-Syntax is as follows: `terminal-boredom sleep 10` -> an example that will monitor a process which will be killed in 10 seconds
-As always, please be wary of sudo. Please verify any code yourself. sudo is required for the keyboard module and can be safely installed via pip.
+
+Example: `terminal-boredom sleep 10` -> an example that will monitor a process which will be killed in 10 seconds.
+
+Please verify any code yourself before running. sudo is required for the keyboard module and can be safely installed via pip.
