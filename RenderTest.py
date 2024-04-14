@@ -5,7 +5,7 @@
 from Game import Game
 from Pixel import Pixel
 from RenderLayer import RenderLayer
-from RenderQueue import RenderQueue
+
 
 import math
 import keyboard
@@ -15,6 +15,8 @@ class RenderTest(Game):
     # Attributes
     __x_off = 0
     __y_off = 0
+
+    __counter = 0
 
     # Init
     def __init__(self):
@@ -34,6 +36,8 @@ class RenderTest(Game):
         if keyboard.is_pressed("q"):
             return "GameSelector"
 
+        self.__counter += 1
+
     def render(self, x, y):
         l1 = RenderLayer(x, y)
 
@@ -41,7 +45,8 @@ class RenderTest(Game):
 
         for nx in range(l1.get_x()):
             for ny in range(l1.get_y()):
-                if -eps < 10*math.sin(nx*math.pi/50 + self.__x_off)+ny - 20 + self.__y_off < eps:
+                if -eps < 10*math.sin(self.__counter*math.pi / 50) * \
+                        math.sin(nx*math.pi/50 + self.__x_off + self.__counter/10)+ny - y/2 < eps:
                     l1.set_pixel(nx, ny, Pixel('0'))
 
         return l1
@@ -53,4 +58,3 @@ class RenderTest(Game):
     # To string
     def __str__(self):
         pass
-

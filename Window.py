@@ -11,10 +11,8 @@ First challenge: let program run at user-definable fps
 import os
 import time
 
-import keyboard
-from RenderLayer import RenderLayer
+
 from RenderQueue import RenderQueue
-from Pixel import Pixel
 
 
 class Window:
@@ -75,7 +73,6 @@ class Window:
             out = self.get_queue().render_ascii()
             print(out.split("\n")[0])
             print(out, end="")
-
 
             # Pause if necessary for frame limiter
             if dtime < 1/self.__FPS:

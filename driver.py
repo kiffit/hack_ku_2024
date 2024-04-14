@@ -2,21 +2,12 @@
 # 04/12/2024
 
 
-import math
-
-from Pixel import Pixel
-from RenderLayer import RenderLayer
-from RenderQueue import RenderQueue
-
-
 import subprocess
-import shlex
 import sys
 
 
 from Window import Window
 from GameBorder import GameBorder
-from Mandelbrot import Mandelbrot
 from GameSelector import GameSelector
 
 
@@ -34,7 +25,7 @@ def main():
 
                 run = False
 
-            except KeyboardInterrupt as e:
+            except KeyboardInterrupt:
                 print("\nExiting program")
                 run = False
 

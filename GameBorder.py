@@ -6,10 +6,12 @@ from Game import Game
 from Pixel import Pixel
 from RenderLayer import RenderLayer
 
+
 from Mandelbrot import Mandelbrot
 from RenderTest import RenderTest
 from GameCanvas import GameCanvas
 from GameSnake import GameSnake
+
 
 from GameSelector import GameSelector
 
@@ -114,4 +116,3 @@ def center_text_len(text, length):
         text += " "
 
     return text
-

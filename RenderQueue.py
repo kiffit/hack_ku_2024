@@ -11,9 +11,6 @@ Rendering the render queue:
 """
 
 
-from RenderLayer import RenderLayer
-
-
 class RenderQueue:
     # Attributes
     __queue = []
@@ -61,15 +58,9 @@ class RenderQueue:
     def get_queue(self):
         return self.__queue
 
-    def get_draw(self):
-        return self.__draw
-
     # Setters
     def set_queue(self, queue):
         self.__queue = queue
-
-    def set_draw(self, draw):
-        self.__draw = draw
 
     # To string
     def __str__(self):

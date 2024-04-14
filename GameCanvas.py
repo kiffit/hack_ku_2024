@@ -5,10 +5,8 @@
 from Game import Game
 from Pixel import Pixel
 from RenderLayer import RenderLayer
-from RenderQueue import RenderQueue
 
 
-import math
 import keyboard
 
 
@@ -66,6 +64,9 @@ class GameCanvas(Game):
         self.__window_x = x
         self.__window_y = y
 
+        i1 = make_layer_from_text("Use [W/A/S/D] to navigate, hold [SPACE] to draw. Press [C] to clear buffer.")
+        output.add_layer(i1)
+
         return output
 
     # Getters
@@ -76,3 +77,30 @@ class GameCanvas(Game):
     def __str__(self):
         pass
 
+
+# Utility
+class bcolors:
+    REDBG = '\033[41m'
+    GREENBG = '\033[42m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+
+
+def make_layer_from_text(text, color=bcolors.BOLD):
+    layer = RenderLayer(len(text), 1)
+
+    for i, char in enumerate(text):
+        layer.set_pixel(i, 0, Pixel(color + char + bcolors.ENDC))
+
+    return layer
+
+
+def center_text_len(text, length):
+    nlength = int((length - len(text))/2)
+    text = (" " * nlength) + text + (" " * nlength)
+
+    if len(text) != length:
+        text += " "
+
+    return text
