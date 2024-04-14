@@ -13,7 +13,10 @@ from GameSelector import GameSelector
 
 def main():
     try:
-        proc = subprocess.Popen(sys.argv[1:])
+        if sys.argv[1:] == []:
+            proc = subprocess.Popen(["echo", "Hello friend!"])
+        else:
+            proc = subprocess.Popen(sys.argv[1:])
 
         run = True
 
@@ -34,6 +37,8 @@ def main():
 
     except BaseException as e:
         print(f"MSG: Error has occurred: {e}")
+
+    subprocess.Popen(["clear"])
 
 
 if __name__ == '__main__':

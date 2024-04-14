@@ -60,15 +60,15 @@ class GameSnake(Game):
                 if self.__dir != "down":
                     self.__dir = "up"
 
-            if keyboard.is_pressed("w"):
+            elif keyboard.is_pressed("w"):
                 if self.__dir != "up":
                     self.__dir = "down"
 
-            if keyboard.is_pressed("a"):
+            elif keyboard.is_pressed("a"):
                 if self.__dir != "right":
                     self.__dir = "left"
 
-            if keyboard.is_pressed("d"):
+            elif keyboard.is_pressed("d"):
                 if self.__dir != "left":
                     self.__dir = "right"
 
