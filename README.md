@@ -15,3 +15,8 @@ terminal-boredom stands as an application I have made for myself and my father, 
 Interested in adding your own applications? terminal-boredom follows a very modular design. Take a look at the Game.py template class and all that inherit it for inspiration. You are only three functions away from drawing to a screen!
 
 Developed for Hack KU 2024.
+
+-------------------------------------------------------------
+
+To run, use the alias `alias terminal-boredom="sudo python3 /PATH/TO/driver.py"`
+As always, be wary of sudo. Please verify code yourself.
