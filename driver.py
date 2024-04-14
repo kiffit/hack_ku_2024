@@ -17,6 +17,7 @@ import sys
 from Window import Window
 from GameBorder import GameBorder
 from Mandelbrot import Mandelbrot
+from GameSelector import GameSelector
 
 
 def main():
@@ -28,7 +29,7 @@ def main():
         while run:
             try:
                 w1 = Window(proc)
-                g1 = GameBorder(Mandelbrot())
+                g1 = GameBorder(GameSelector())
                 w1.run_game(g1)
 
                 run = False

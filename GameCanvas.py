@@ -12,7 +12,7 @@ import math
 import keyboard
 
 
-class GameSelector(Game):
+class GameCanvas(Game):
     # Attributes
     __cursor_x = 0
     __cursor_y = 0
@@ -24,6 +24,8 @@ class GameSelector(Game):
 
     __CURSOR_SPEED_X = 30
     __CURSOR_SPEED_Y = 15
+
+    __drawn_pixels = set()
 
     # Init
     def __init__(self):
@@ -41,6 +43,8 @@ class GameSelector(Game):
             self.__cursor_x -= (dtime * self.__CURSOR_SPEED_X)
         if keyboard.is_pressed("d"):
             self.__cursor_x += (dtime * self.__CURSOR_SPEED_X)
+        if keyboard.is_pressed("c"):
+            self.__drawn_pixels = set()
 
         if keyboard.is_pressed("q"):
             return "GameSelector"
@@ -49,28 +53,13 @@ class GameSelector(Game):
         self.__cursor_x = min(max(0, self.__cursor_x), self.__window_x-2)
 
         if keyboard.is_pressed("space"):
-            if self.__cursor_y < self.__window_y/2:
-                if self.__cursor_x < self.__window_x/2:
-                    return "Mandelbrot"
-                else:
-                    return "RenderTest"
-            else:
-                if self.__cursor_x < self.__window_x/2:
-                    return "GameCanvas"
-                else:
-                    return "RenderTest"
+            self.__drawn_pixels.add((round(self.__cursor_x), round(self.__cursor_y)))
 
     def render(self, x, y):
         output = RenderLayer(x, y)
 
-        for nx in range(x):
-            for ny in range(y):
-                if ny == int(y/2):
-                    output.set_pixel(nx, ny, Pixel("-"))
-                if nx == int(x/2):
-                    output.set_pixel(nx, ny, Pixel("|"))
-                if nx == int(x/2) and ny == int(y/2):
-                    output.set_pixel(nx, ny, Pixel("+"))
+        for pixels in self.__drawn_pixels:
+            output.set_pixel(pixels[0], pixels[1], Pixel("#"))
 
         output.add_layer(self.__cursor_image, round(self.__cursor_x), round(self.__cursor_y))
 

@@ -31,6 +31,9 @@ class RenderTest(Game):
         if keyboard.is_pressed("s"):
             self.__y_off += dtime * 4
 
+        if keyboard.is_pressed("q"):
+            return "GameSelector"
+
     def render(self, x, y):
         l1 = RenderLayer(x, y)
 

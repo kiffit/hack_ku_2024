@@ -22,23 +22,30 @@ class Mandelbrot(Game):
 
     __SPEED = 10
 
+    __SPEED_MULT = 3
+
     # Init
     def __init__(self):
         super().__init__()
 
     # Methods
     def next(self, dtime):
+        spd = self.__SPEED
+
+        if keyboard.is_pressed("shift"):
+            spd *= self.__SPEED_MULT
+
         if keyboard.is_pressed("a"):  # left
-            self.set_cpos_x(self.get_cpos_x() - (dtime*self.__SPEED / self.get_scale()))
+            self.set_cpos_x(self.get_cpos_x() - (dtime * spd / self.get_scale()))
 
         if keyboard.is_pressed("d"):  # right
-            self.set_cpos_x(self.get_cpos_x() + (dtime * self.__SPEED / self.get_scale()))
+            self.set_cpos_x(self.get_cpos_x() + (dtime * spd / self.get_scale()))
 
         if keyboard.is_pressed("w"):  # up
-            self.set_cpos_y(self.get_cpos_y() - (dtime * self.__SPEED / self.get_scale()))
+            self.set_cpos_y(self.get_cpos_y() - (dtime * spd / self.get_scale()))
 
         if keyboard.is_pressed("s"):  # down
-            self.set_cpos_y(self.get_cpos_y() + (dtime * self.__SPEED / self.get_scale()))
+            self.set_cpos_y(self.get_cpos_y() + (dtime * spd / self.get_scale()))
 
         if keyboard.is_pressed("j"):  # zoom in
             self.set_scale(self.get_scale() + dtime * self.get_scale())
@@ -51,6 +58,9 @@ class Mandelbrot(Game):
 
         if keyboard.is_pressed(";"):  # increase iterations
             self.set_iterations(self.get_iterations() + 1)
+
+        if keyboard.is_pressed("q"):
+            return "GameSelector"
 
     def render(self, x, y):
         brightness = [" ", ".", "*", "X", "#"]

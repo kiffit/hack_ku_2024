@@ -7,6 +7,12 @@ from Pixel import Pixel
 from RenderLayer import RenderLayer
 from RenderTest import RenderTest
 
+from Mandelbrot import Mandelbrot
+from RenderTest import RenderTest
+from GameCanvas import GameCanvas
+
+from GameSelector import GameSelector
+
 
 class GameBorder(Game):
     # Attributes
@@ -23,7 +29,17 @@ class GameBorder(Game):
 
     # Methods
     def next(self, dtime):
-        self.get_sub_game().next(dtime)
+        game = self.get_sub_game().next(dtime)
+        if game is not None:
+            if game == "GameSelector":
+                self.set_sub_game(GameSelector())
+            elif game == "Mandelbrot":
+                self.set_sub_game(Mandelbrot())
+            elif game == "RenderTest":
+                self.set_sub_game(RenderTest())
+            elif game == "GameCanvas":
+                self.set_sub_game(GameCanvas())
+
 
     def render(self, x, y, pid_status):
         """
